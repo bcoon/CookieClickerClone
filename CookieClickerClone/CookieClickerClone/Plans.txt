@@ -1,0 +1,10 @@
+﻿Plans:
+1. GUI rough layout-----------------------------(roughly done)
+2. Abstract Class Layout: Generators------------(done)
+3. Setting up timer-----------------------------(in progress)
+4. Allow cookie clicking
+5. Buying Generators, displaying on GUI
+6. Golden Cookies
+7. Upgrades, displaying on GUI
+8. Saving, loading
+9. Selling generators
