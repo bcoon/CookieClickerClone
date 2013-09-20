@@ -63,10 +63,29 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
+        Friend ReadOnly Property bg() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("bg", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
         Friend ReadOnly Property cookie() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("cookie", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to per second:.
+        '''</summary>
+        Friend ReadOnly Property strPerSecond() As String
+            Get
+                Return ResourceManager.GetString("strPerSecond", resourceCulture)
             End Get
         End Property
     End Module

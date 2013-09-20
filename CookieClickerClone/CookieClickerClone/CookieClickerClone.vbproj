@@ -72,6 +72,8 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlchemyLab.vb" />
+    <Compile Include="AntimatterCondenser.vb" />
     <Compile Include="CookieClicker.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -79,6 +81,12 @@
       <DependentUpon>CookieClicker.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Cursor.vb" />
+    <Compile Include="Factory.vb" />
+    <Compile Include="Farm.vb" />
+    <Compile Include="Generator.vb" />
+    <Compile Include="Grandma.vb" />
+    <Compile Include="Mine.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -94,6 +102,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Portal.vb" />
+    <Compile Include="Shipment.vb" />
+    <Compile Include="TimeMachine.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="CookieClicker.resx">
@@ -107,6 +118,8 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -119,7 +132,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="My Project\cookie.png" />
+    <None Include="My Project\bg.png" />
     <Content Include="Plans.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
