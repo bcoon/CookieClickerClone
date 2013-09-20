@@ -18,9 +18,6 @@
     Dim timeMachine As New TimeMachine
     Dim antimatterCondenser As New AntimatterCondenser
 
-    'used to persistantly update values
-    Dim enableButtonsThread As New System.Threading.Thread(AddressOf Me.enableButtons)
-
     'Keeping track of the generators listed on the form (pic, button, label)
     Const NUMBER_OF_GENERATORS = 10
     Dim generatorArray(NUMBER_OF_GENERATORS, 3) As Object 'each element of generatorArray contains: [pic, button, label]
@@ -32,19 +29,13 @@
 
         Dim form As CookieClicker = New CookieClicker()
         form.tmrCounter.Start()
+
         Application.Run(form)
-
-        'persistantly check for which things can be purchased
-        form.enableButtonsThread.IsBackground = True
-        form.enableButtonsThread.Start()
-
+        form.enableButtons()
     End Sub
 
     'timer will tick every tenth of a second
     Private Sub tmrCounter_Tick(ByVal sender As Object, ByVal e As System.EventArgs) Handles tmrCounter.Tick
-        'If enableButtonsThread.IsAlive Then
-        'enableButtonsThread.Suspend()
-        'End If
 
         'update values
         time += 1
@@ -53,14 +44,6 @@
 
         'update displays
         lblCurrentCookies.Text = currentCookies
-
-        If time Mod 10 = 0 Then 'one second has passed
-
-        End If
-
-        'If enableButtonsThread.IsAlive Then
-        'enableButtonsThread.Resume()
-        'End If
 
     End Sub
 
@@ -82,6 +65,8 @@
     Private Sub enableButtons()
         'each element of generatorArray contains: [pic, button, label]
         'the following code populates the list of generators
+
+        'persistantly check for which things can be purchased
         Dim index() As Integer = {0, 0, 0}    'keep track of number of [pic, button, label] seen
 
         For Each item As Control In pnlRight.Controls
@@ -97,6 +82,7 @@
             End If
         Next
 
+        'used to persistantly update values
         'code for enabling/disabling buttons
         While (True)
             For i As Integer = 0 To NUMBER_OF_GENERATORS - 1
