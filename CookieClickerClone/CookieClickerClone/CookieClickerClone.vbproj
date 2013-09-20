@@ -133,6 +133,7 @@
   <ItemGroup>
     <None Include="My Project\cookie.png" />
     <None Include="My Project\bg.png" />
+    <None Include="My Project\tempImage.png" />
     <Content Include="Plans.txt" />
   </ItemGroup>
   <ItemGroup>

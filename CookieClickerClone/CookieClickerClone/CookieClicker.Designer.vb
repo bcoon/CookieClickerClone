@@ -23,6 +23,7 @@ Partial Class CookieClicker
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(CookieClicker))
         Me.pnlLeft = New System.Windows.Forms.Panel()
         Me.lblCurrentCookies = New System.Windows.Forms.Label()
         Me.lblCpS = New System.Windows.Forms.Label()
@@ -30,16 +31,6 @@ Partial Class CookieClicker
         Me.tmrCounter = New System.Windows.Forms.Timer(Me.components)
         Me.pnlCenter = New System.Windows.Forms.Panel()
         Me.pnlRight = New System.Windows.Forms.Panel()
-        Me.picAntimatterCondenser = New System.Windows.Forms.PictureBox()
-        Me.picTimeMachine = New System.Windows.Forms.PictureBox()
-        Me.picPortal = New System.Windows.Forms.PictureBox()
-        Me.picAlchemyLab = New System.Windows.Forms.PictureBox()
-        Me.picShipment = New System.Windows.Forms.PictureBox()
-        Me.picMine = New System.Windows.Forms.PictureBox()
-        Me.picFactory = New System.Windows.Forms.PictureBox()
-        Me.picFarm = New System.Windows.Forms.PictureBox()
-        Me.picGrandma = New System.Windows.Forms.PictureBox()
-        Me.picCursor = New System.Windows.Forms.PictureBox()
         Me.lblAntimatterCondenser = New System.Windows.Forms.Label()
         Me.lblTimeMachine = New System.Windows.Forms.Label()
         Me.lblPortal = New System.Windows.Forms.Label()
@@ -63,19 +54,10 @@ Partial Class CookieClicker
         Me.pnlMessages = New System.Windows.Forms.Panel()
         Me.pnlUpgrades = New System.Windows.Forms.Panel()
         Me.lblStore = New System.Windows.Forms.Label()
+        Me.tmrButtonEnabler = New System.Windows.Forms.Timer(Me.components)
         Me.pnlLeft.SuspendLayout()
         CType(Me.picCookie, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlRight.SuspendLayout()
-        CType(Me.picAntimatterCondenser, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.picTimeMachine, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.picPortal, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.picAlchemyLab, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.picShipment, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.picMine, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.picFactory, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.picFarm, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.picGrandma, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.picCursor, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlUpgrades.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -142,16 +124,6 @@ Partial Class CookieClicker
         '
         Me.pnlRight.AutoScroll = True
         Me.pnlRight.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.pnlRight.Controls.Add(Me.picAntimatterCondenser)
-        Me.pnlRight.Controls.Add(Me.picTimeMachine)
-        Me.pnlRight.Controls.Add(Me.picPortal)
-        Me.pnlRight.Controls.Add(Me.picAlchemyLab)
-        Me.pnlRight.Controls.Add(Me.picShipment)
-        Me.pnlRight.Controls.Add(Me.picMine)
-        Me.pnlRight.Controls.Add(Me.picFactory)
-        Me.pnlRight.Controls.Add(Me.picFarm)
-        Me.pnlRight.Controls.Add(Me.picGrandma)
-        Me.pnlRight.Controls.Add(Me.picCursor)
         Me.pnlRight.Controls.Add(Me.lblAntimatterCondenser)
         Me.pnlRight.Controls.Add(Me.lblTimeMachine)
         Me.pnlRight.Controls.Add(Me.lblPortal)
@@ -177,102 +149,12 @@ Partial Class CookieClicker
         Me.pnlRight.Size = New System.Drawing.Size(340, 481)
         Me.pnlRight.TabIndex = 2
         '
-        'picAntimatterCondenser
-        '
-        Me.picAntimatterCondenser.Enabled = False
-        Me.picAntimatterCondenser.Location = New System.Drawing.Point(5, 550)
-        Me.picAntimatterCondenser.Name = "picAntimatterCondenser"
-        Me.picAntimatterCondenser.Size = New System.Drawing.Size(40, 40)
-        Me.picAntimatterCondenser.TabIndex = 29
-        Me.picAntimatterCondenser.TabStop = False
-        '
-        'picTimeMachine
-        '
-        Me.picTimeMachine.Enabled = False
-        Me.picTimeMachine.Location = New System.Drawing.Point(5, 490)
-        Me.picTimeMachine.Name = "picTimeMachine"
-        Me.picTimeMachine.Size = New System.Drawing.Size(40, 40)
-        Me.picTimeMachine.TabIndex = 28
-        Me.picTimeMachine.TabStop = False
-        '
-        'picPortal
-        '
-        Me.picPortal.Enabled = False
-        Me.picPortal.Location = New System.Drawing.Point(5, 430)
-        Me.picPortal.Name = "picPortal"
-        Me.picPortal.Size = New System.Drawing.Size(40, 40)
-        Me.picPortal.TabIndex = 27
-        Me.picPortal.TabStop = False
-        '
-        'picAlchemyLab
-        '
-        Me.picAlchemyLab.Enabled = False
-        Me.picAlchemyLab.Location = New System.Drawing.Point(5, 370)
-        Me.picAlchemyLab.Name = "picAlchemyLab"
-        Me.picAlchemyLab.Size = New System.Drawing.Size(40, 40)
-        Me.picAlchemyLab.TabIndex = 26
-        Me.picAlchemyLab.TabStop = False
-        '
-        'picShipment
-        '
-        Me.picShipment.Enabled = False
-        Me.picShipment.Location = New System.Drawing.Point(5, 310)
-        Me.picShipment.Name = "picShipment"
-        Me.picShipment.Size = New System.Drawing.Size(40, 40)
-        Me.picShipment.TabIndex = 25
-        Me.picShipment.TabStop = False
-        '
-        'picMine
-        '
-        Me.picMine.Enabled = False
-        Me.picMine.Location = New System.Drawing.Point(5, 250)
-        Me.picMine.Name = "picMine"
-        Me.picMine.Size = New System.Drawing.Size(40, 40)
-        Me.picMine.TabIndex = 24
-        Me.picMine.TabStop = False
-        '
-        'picFactory
-        '
-        Me.picFactory.Enabled = False
-        Me.picFactory.Location = New System.Drawing.Point(5, 190)
-        Me.picFactory.Name = "picFactory"
-        Me.picFactory.Size = New System.Drawing.Size(40, 40)
-        Me.picFactory.TabIndex = 23
-        Me.picFactory.TabStop = False
-        '
-        'picFarm
-        '
-        Me.picFarm.Enabled = False
-        Me.picFarm.Location = New System.Drawing.Point(5, 130)
-        Me.picFarm.Name = "picFarm"
-        Me.picFarm.Size = New System.Drawing.Size(40, 40)
-        Me.picFarm.TabIndex = 22
-        Me.picFarm.TabStop = False
-        '
-        'picGrandma
-        '
-        Me.picGrandma.Enabled = False
-        Me.picGrandma.Location = New System.Drawing.Point(5, 70)
-        Me.picGrandma.Name = "picGrandma"
-        Me.picGrandma.Size = New System.Drawing.Size(40, 40)
-        Me.picGrandma.TabIndex = 21
-        Me.picGrandma.TabStop = False
-        '
-        'picCursor
-        '
-        Me.picCursor.Enabled = False
-        Me.picCursor.Location = New System.Drawing.Point(4, 10)
-        Me.picCursor.Name = "picCursor"
-        Me.picCursor.Size = New System.Drawing.Size(40, 40)
-        Me.picCursor.TabIndex = 20
-        Me.picCursor.TabStop = False
-        '
         'lblAntimatterCondenser
         '
-        Me.lblAntimatterCondenser.BackColor = System.Drawing.Color.Transparent
+        Me.lblAntimatterCondenser.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.lblAntimatterCondenser.Enabled = False
         Me.lblAntimatterCondenser.Font = New System.Drawing.Font("Lucida Console", 12.75!)
-        Me.lblAntimatterCondenser.Location = New System.Drawing.Point(254, 543)
+        Me.lblAntimatterCondenser.Location = New System.Drawing.Point(252, 543)
         Me.lblAntimatterCondenser.Name = "lblAntimatterCondenser"
         Me.lblAntimatterCondenser.Size = New System.Drawing.Size(65, 55)
         Me.lblAntimatterCondenser.TabIndex = 19
@@ -280,7 +162,7 @@ Partial Class CookieClicker
         '
         'lblTimeMachine
         '
-        Me.lblTimeMachine.BackColor = System.Drawing.Color.Transparent
+        Me.lblTimeMachine.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.lblTimeMachine.Enabled = False
         Me.lblTimeMachine.Font = New System.Drawing.Font("Lucida Console", 12.75!)
         Me.lblTimeMachine.Location = New System.Drawing.Point(252, 483)
@@ -291,7 +173,7 @@ Partial Class CookieClicker
         '
         'lblPortal
         '
-        Me.lblPortal.BackColor = System.Drawing.Color.Transparent
+        Me.lblPortal.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.lblPortal.Enabled = False
         Me.lblPortal.Font = New System.Drawing.Font("Lucida Console", 12.75!)
         Me.lblPortal.Location = New System.Drawing.Point(252, 423)
@@ -302,7 +184,7 @@ Partial Class CookieClicker
         '
         'lblAlchemyLab
         '
-        Me.lblAlchemyLab.BackColor = System.Drawing.Color.Transparent
+        Me.lblAlchemyLab.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.lblAlchemyLab.Enabled = False
         Me.lblAlchemyLab.Font = New System.Drawing.Font("Lucida Console", 12.75!)
         Me.lblAlchemyLab.Location = New System.Drawing.Point(252, 363)
@@ -313,7 +195,7 @@ Partial Class CookieClicker
         '
         'lblShipment
         '
-        Me.lblShipment.BackColor = System.Drawing.Color.Transparent
+        Me.lblShipment.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.lblShipment.Enabled = False
         Me.lblShipment.Font = New System.Drawing.Font("Lucida Console", 12.75!)
         Me.lblShipment.Location = New System.Drawing.Point(252, 303)
@@ -324,10 +206,10 @@ Partial Class CookieClicker
         '
         'lblMine
         '
-        Me.lblMine.BackColor = System.Drawing.Color.Transparent
+        Me.lblMine.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.lblMine.Enabled = False
         Me.lblMine.Font = New System.Drawing.Font("Lucida Console", 12.75!)
-        Me.lblMine.Location = New System.Drawing.Point(254, 243)
+        Me.lblMine.Location = New System.Drawing.Point(252, 243)
         Me.lblMine.Name = "lblMine"
         Me.lblMine.Size = New System.Drawing.Size(65, 55)
         Me.lblMine.TabIndex = 14
@@ -335,10 +217,10 @@ Partial Class CookieClicker
         '
         'lblFactory
         '
-        Me.lblFactory.BackColor = System.Drawing.Color.Transparent
+        Me.lblFactory.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.lblFactory.Enabled = False
         Me.lblFactory.Font = New System.Drawing.Font("Lucida Console", 12.75!)
-        Me.lblFactory.Location = New System.Drawing.Point(252, 184)
+        Me.lblFactory.Location = New System.Drawing.Point(252, 183)
         Me.lblFactory.Name = "lblFactory"
         Me.lblFactory.Size = New System.Drawing.Size(65, 55)
         Me.lblFactory.TabIndex = 13
@@ -346,7 +228,7 @@ Partial Class CookieClicker
         '
         'lblFarm
         '
-        Me.lblFarm.BackColor = System.Drawing.Color.Transparent
+        Me.lblFarm.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.lblFarm.Enabled = False
         Me.lblFarm.Font = New System.Drawing.Font("Lucida Console", 12.75!)
         Me.lblFarm.Location = New System.Drawing.Point(252, 123)
@@ -357,7 +239,7 @@ Partial Class CookieClicker
         '
         'lblGrandma
         '
-        Me.lblGrandma.BackColor = System.Drawing.Color.Transparent
+        Me.lblGrandma.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.lblGrandma.Enabled = False
         Me.lblGrandma.Font = New System.Drawing.Font("Lucida Console", 12.75!)
         Me.lblGrandma.Location = New System.Drawing.Point(252, 63)
@@ -368,10 +250,10 @@ Partial Class CookieClicker
         '
         'lblCursor
         '
-        Me.lblCursor.BackColor = System.Drawing.Color.Transparent
+        Me.lblCursor.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.lblCursor.Enabled = False
         Me.lblCursor.Font = New System.Drawing.Font("Lucida Console", 12.75!)
-        Me.lblCursor.Location = New System.Drawing.Point(252, 2)
+        Me.lblCursor.Location = New System.Drawing.Point(252, 3)
         Me.lblCursor.Name = "lblCursor"
         Me.lblCursor.Size = New System.Drawing.Size(65, 55)
         Me.lblCursor.TabIndex = 10
@@ -379,146 +261,196 @@ Partial Class CookieClicker
         '
         'btnAntimatterCondenser
         '
+        Me.btnAntimatterCondenser.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.btnAntimatterCondenser.Enabled = False
+        Me.btnAntimatterCondenser.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.btnAntimatterCondenser.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ActiveCaption
         Me.btnAntimatterCondenser.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnAntimatterCondenser.Font = New System.Drawing.Font("Lucida Console", 12.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnAntimatterCondenser.Image = CType(resources.GetObject("btnAntimatterCondenser.Image"), System.Drawing.Image)
+        Me.btnAntimatterCondenser.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnAntimatterCondenser.Location = New System.Drawing.Point(0, 540)
         Me.btnAntimatterCondenser.Name = "btnAntimatterCondenser"
-        Me.btnAntimatterCondenser.Padding = New System.Windows.Forms.Padding(40, 0, 0, 0)
         Me.btnAntimatterCondenser.Size = New System.Drawing.Size(321, 60)
         Me.btnAntimatterCondenser.TabIndex = 9
         Me.btnAntimatterCondenser.Text = "Antimatter Condenser"
         Me.btnAntimatterCondenser.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnAntimatterCondenser.UseVisualStyleBackColor = True
+        Me.btnAntimatterCondenser.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnAntimatterCondenser.UseVisualStyleBackColor = False
         '
         'btnTimeMachine
         '
+        Me.btnTimeMachine.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.btnTimeMachine.Enabled = False
+        Me.btnTimeMachine.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.btnTimeMachine.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ActiveCaption
         Me.btnTimeMachine.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnTimeMachine.Font = New System.Drawing.Font("Lucida Console", 12.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnTimeMachine.Image = CType(resources.GetObject("btnTimeMachine.Image"), System.Drawing.Image)
+        Me.btnTimeMachine.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnTimeMachine.Location = New System.Drawing.Point(0, 480)
         Me.btnTimeMachine.Name = "btnTimeMachine"
-        Me.btnTimeMachine.Padding = New System.Windows.Forms.Padding(40, 0, 0, 0)
         Me.btnTimeMachine.Size = New System.Drawing.Size(321, 60)
         Me.btnTimeMachine.TabIndex = 8
         Me.btnTimeMachine.Text = "Time Machine"
         Me.btnTimeMachine.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnTimeMachine.UseVisualStyleBackColor = True
+        Me.btnTimeMachine.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnTimeMachine.UseVisualStyleBackColor = False
         '
         'btnPortal
         '
+        Me.btnPortal.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.btnPortal.Enabled = False
+        Me.btnPortal.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.btnPortal.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ActiveCaption
         Me.btnPortal.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnPortal.Font = New System.Drawing.Font("Lucida Console", 12.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnPortal.Image = CType(resources.GetObject("btnPortal.Image"), System.Drawing.Image)
+        Me.btnPortal.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnPortal.Location = New System.Drawing.Point(0, 420)
         Me.btnPortal.Name = "btnPortal"
-        Me.btnPortal.Padding = New System.Windows.Forms.Padding(40, 0, 0, 0)
         Me.btnPortal.Size = New System.Drawing.Size(321, 60)
         Me.btnPortal.TabIndex = 7
         Me.btnPortal.Text = "Portal"
         Me.btnPortal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnPortal.UseVisualStyleBackColor = True
+        Me.btnPortal.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnPortal.UseVisualStyleBackColor = False
         '
         'btnAlchemyLab
         '
+        Me.btnAlchemyLab.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.btnAlchemyLab.Enabled = False
+        Me.btnAlchemyLab.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.btnAlchemyLab.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ActiveCaption
         Me.btnAlchemyLab.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnAlchemyLab.Font = New System.Drawing.Font("Lucida Console", 12.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnAlchemyLab.Image = CType(resources.GetObject("btnAlchemyLab.Image"), System.Drawing.Image)
+        Me.btnAlchemyLab.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnAlchemyLab.Location = New System.Drawing.Point(0, 360)
         Me.btnAlchemyLab.Name = "btnAlchemyLab"
-        Me.btnAlchemyLab.Padding = New System.Windows.Forms.Padding(40, 0, 0, 0)
         Me.btnAlchemyLab.Size = New System.Drawing.Size(321, 60)
         Me.btnAlchemyLab.TabIndex = 6
         Me.btnAlchemyLab.Text = "Alchemy Lab"
         Me.btnAlchemyLab.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnAlchemyLab.UseVisualStyleBackColor = True
+        Me.btnAlchemyLab.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnAlchemyLab.UseVisualStyleBackColor = False
         '
         'btnShipment
         '
+        Me.btnShipment.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.btnShipment.Enabled = False
+        Me.btnShipment.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.btnShipment.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ActiveCaption
         Me.btnShipment.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnShipment.Font = New System.Drawing.Font("Lucida Console", 12.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnShipment.Image = CType(resources.GetObject("btnShipment.Image"), System.Drawing.Image)
+        Me.btnShipment.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnShipment.Location = New System.Drawing.Point(0, 300)
         Me.btnShipment.Name = "btnShipment"
-        Me.btnShipment.Padding = New System.Windows.Forms.Padding(40, 0, 0, 0)
         Me.btnShipment.Size = New System.Drawing.Size(321, 60)
         Me.btnShipment.TabIndex = 5
         Me.btnShipment.Text = "Shipment"
         Me.btnShipment.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnShipment.UseVisualStyleBackColor = True
+        Me.btnShipment.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnShipment.UseVisualStyleBackColor = False
         '
         'btnMine
         '
+        Me.btnMine.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.btnMine.Enabled = False
+        Me.btnMine.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.btnMine.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ActiveCaption
         Me.btnMine.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnMine.Font = New System.Drawing.Font("Lucida Console", 12.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnMine.Image = CType(resources.GetObject("btnMine.Image"), System.Drawing.Image)
+        Me.btnMine.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnMine.Location = New System.Drawing.Point(0, 240)
         Me.btnMine.Name = "btnMine"
-        Me.btnMine.Padding = New System.Windows.Forms.Padding(40, 0, 0, 0)
         Me.btnMine.Size = New System.Drawing.Size(321, 60)
         Me.btnMine.TabIndex = 4
         Me.btnMine.Text = "Mine"
         Me.btnMine.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnMine.UseVisualStyleBackColor = True
+        Me.btnMine.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnMine.UseVisualStyleBackColor = False
         '
         'btnFactory
         '
+        Me.btnFactory.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.btnFactory.Enabled = False
+        Me.btnFactory.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.btnFactory.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ActiveCaption
         Me.btnFactory.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnFactory.Font = New System.Drawing.Font("Lucida Console", 12.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnFactory.Image = CType(resources.GetObject("btnFactory.Image"), System.Drawing.Image)
+        Me.btnFactory.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnFactory.Location = New System.Drawing.Point(0, 180)
         Me.btnFactory.Name = "btnFactory"
-        Me.btnFactory.Padding = New System.Windows.Forms.Padding(40, 0, 0, 0)
         Me.btnFactory.Size = New System.Drawing.Size(321, 60)
         Me.btnFactory.TabIndex = 3
         Me.btnFactory.Text = "Factory"
         Me.btnFactory.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnFactory.UseVisualStyleBackColor = True
+        Me.btnFactory.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnFactory.UseVisualStyleBackColor = False
         '
         'btnFarm
         '
+        Me.btnFarm.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.btnFarm.Enabled = False
+        Me.btnFarm.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.btnFarm.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ActiveCaption
         Me.btnFarm.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnFarm.Font = New System.Drawing.Font("Lucida Console", 12.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnFarm.Image = CType(resources.GetObject("btnFarm.Image"), System.Drawing.Image)
+        Me.btnFarm.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnFarm.Location = New System.Drawing.Point(0, 120)
         Me.btnFarm.Name = "btnFarm"
-        Me.btnFarm.Padding = New System.Windows.Forms.Padding(40, 0, 0, 0)
         Me.btnFarm.Size = New System.Drawing.Size(321, 60)
         Me.btnFarm.TabIndex = 2
         Me.btnFarm.Tag = ""
         Me.btnFarm.Text = "Farm"
         Me.btnFarm.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnFarm.UseVisualStyleBackColor = True
+        Me.btnFarm.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnFarm.UseVisualStyleBackColor = False
         '
         'btnGrandma
         '
+        Me.btnGrandma.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.btnGrandma.Enabled = False
+        Me.btnGrandma.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.btnGrandma.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ActiveCaption
         Me.btnGrandma.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnGrandma.Font = New System.Drawing.Font("Lucida Console", 12.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnGrandma.Image = CType(resources.GetObject("btnGrandma.Image"), System.Drawing.Image)
+        Me.btnGrandma.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnGrandma.Location = New System.Drawing.Point(0, 60)
         Me.btnGrandma.Name = "btnGrandma"
-        Me.btnGrandma.Padding = New System.Windows.Forms.Padding(40, 0, 0, 0)
         Me.btnGrandma.Size = New System.Drawing.Size(321, 60)
         Me.btnGrandma.TabIndex = 1
         Me.btnGrandma.Tag = ""
         Me.btnGrandma.Text = "Grandma"
         Me.btnGrandma.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnGrandma.UseVisualStyleBackColor = True
+        Me.btnGrandma.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnGrandma.UseVisualStyleBackColor = False
         '
         'btnCursor
         '
+        Me.btnCursor.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.btnCursor.Enabled = False
+        Me.btnCursor.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.btnCursor.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ActiveCaption
         Me.btnCursor.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnCursor.Font = New System.Drawing.Font("Lucida Console", 12.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnCursor.Image = CType(resources.GetObject("btnCursor.Image"), System.Drawing.Image)
+        Me.btnCursor.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnCursor.Location = New System.Drawing.Point(0, 0)
         Me.btnCursor.Name = "btnCursor"
-        Me.btnCursor.Padding = New System.Windows.Forms.Padding(40, 0, 0, 0)
         Me.btnCursor.Size = New System.Drawing.Size(321, 60)
         Me.btnCursor.TabIndex = 0
         Me.btnCursor.Tag = ""
         Me.btnCursor.Text = "Cursor"
         Me.btnCursor.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnCursor.UseVisualStyleBackColor = True
+        Me.btnCursor.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnCursor.UseVisualStyleBackColor = False
         '
         'pnlMessages
         '
@@ -549,6 +481,9 @@ Partial Class CookieClicker
         Me.lblStore.Text = "Store"
         Me.lblStore.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
+        'tmrButtonEnabler
+        '
+        '
         'CookieClicker
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -569,16 +504,6 @@ Partial Class CookieClicker
         Me.pnlLeft.ResumeLayout(False)
         CType(Me.picCookie, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlRight.ResumeLayout(False)
-        CType(Me.picAntimatterCondenser, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.picTimeMachine, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.picPortal, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.picAlchemyLab, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.picShipment, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.picMine, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.picFactory, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.picFarm, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.picGrandma, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.picCursor, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlUpgrades.ResumeLayout(False)
         Me.ResumeLayout(False)
 
@@ -613,15 +538,6 @@ Partial Class CookieClicker
     Friend WithEvents lblTimeMachine As System.Windows.Forms.Label
     Friend WithEvents lblPortal As System.Windows.Forms.Label
     Friend WithEvents lblAlchemyLab As System.Windows.Forms.Label
-    Friend WithEvents picAntimatterCondenser As System.Windows.Forms.PictureBox
-    Friend WithEvents picTimeMachine As System.Windows.Forms.PictureBox
-    Friend WithEvents picPortal As System.Windows.Forms.PictureBox
-    Friend WithEvents picAlchemyLab As System.Windows.Forms.PictureBox
-    Friend WithEvents picShipment As System.Windows.Forms.PictureBox
-    Friend WithEvents picMine As System.Windows.Forms.PictureBox
-    Friend WithEvents picFactory As System.Windows.Forms.PictureBox
-    Friend WithEvents picFarm As System.Windows.Forms.PictureBox
-    Friend WithEvents picGrandma As System.Windows.Forms.PictureBox
-    Friend WithEvents picCursor As System.Windows.Forms.PictureBox
+    Friend WithEvents tmrButtonEnabler As System.Windows.Forms.Timer
 
 End Class

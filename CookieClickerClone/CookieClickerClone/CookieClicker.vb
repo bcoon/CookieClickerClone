@@ -1,11 +1,12 @@
 ﻿Public Class CookieClicker
-    Dim currentCookies As Long = 0
-    Dim alltimeCookies As Long = 0
-    Dim buildingsOwned As Integer = 0
-    Dim CpS As Double = 0.0             'cookies per second
-    Dim cookiesPerClick As Long = 1
-    Dim handMadeCookies As Long = 0
-    Dim goldenCookies As Integer = 0
+    Dim currentCookies As Double = 1000.0   'cookies onhand
+    Dim alltimeCookies As Double = 0        'all cookies made ever
+    Dim buildingsOwned As Integer = 0   'generators owned
+    Dim CpS As Double = 1.2             'cookies per second
+    Dim cookiesPerClick As Long = 1     'cookies received for clicking the cookie
+    Dim handMadeCookies As Long = 0     'cookies made by clicking and golden cookie clicks
+    Dim goldenCookies As Integer = 0    'golden cookies clicked
+    Dim multiplyer As Double = 1.0      'some upgrades will change this
 
     Shadows cursor As New Cursor
     Dim grandma As New Grandma
@@ -18,20 +19,34 @@
     Dim timeMachine As New TimeMachine
     Dim antimatterCondenser As New AntimatterCondenser
 
-    'Keeping track of the generators listed on the form (pic, button, label)
+    'Keeping track of the generators listed on the form (button, label)
     Const NUMBER_OF_GENERATORS = 10
-    Dim generatorArray(NUMBER_OF_GENERATORS, 3) As Object 'each element of generatorArray contains: [pic, button, label]
-    Dim typeArray() As Generator = {cursor, grandma, farm, factory, mine, shipment, alchemyLab, portal, timeMachine, antimatterCondenser}
+    Dim generatorArray(NUMBER_OF_GENERATORS - 1, 1) As Object 'each element of generatorArray contains: [button, label]
+    Dim typeArray() As Generator = {antimatterCondenser, timeMachine, portal, alchemyLab, shipment, mine, factory, farm, grandma, cursor}
 
     Dim time As Integer = 0
 
     Public Shared Sub Main()
+        'each element of generatorArray contains: [button, label]
+        'the following code populates the list of generators
+        Dim index() As Integer = {0, 0}    'keep track of number of [button, label] seen
 
         Dim form As CookieClicker = New CookieClicker()
-        form.tmrCounter.Start()
 
+        For Each item As Control In form.pnlRight.Controls
+            If TypeOf item Is Button Then
+                form.generatorArray(index(0), 0) = TryCast(item, Button)
+                index(0) += 1
+            ElseIf TypeOf item Is Label Then
+                form.generatorArray(index(1), 1) = TryCast(item, Label)
+                index(1) += 1
+            End If
+        Next
+
+        form.tmrCounter.Start()
+        form.tmrButtonEnabler.Start()
         Application.Run(form)
-        form.enableButtons()
+
     End Sub
 
     'timer will tick every tenth of a second
@@ -39,65 +54,59 @@
 
         'update values
         time += 1
-        currentCookies += CpS / 10
-        alltimeCookies += CpS / 10
+        currentCookies += CpS * tmrCounter.Interval / 1000
+        alltimeCookies += CpS * tmrCounter.Interval / 1000
 
         'update displays
-        lblCurrentCookies.Text = currentCookies
+        lblCurrentCookies.Text = Math.Round(currentCookies, 1)
 
     End Sub
 
     Private Sub picCookie_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles picCookie.Click
         'update values
-        currentCookies += 1
-        alltimeCookies += 1
+        currentCookies += cookiesPerClick
+        alltimeCookies += cookiesPerClick
+        handMadeCookies += cookiesPerClick
 
         'update displays
-        lblCurrentCookies.Text = currentCookies
+        lblCurrentCookies.Text = Math.Round(currentCookies, 1)
 
     End Sub
 
-    Private Sub cursor_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles picCursor.Click, btnCursor.Click, lblCursor.Click
+    'called by a timer every tick to persistently check which buttons can be enabled
+    Private Sub enableButtons()
+        'used to persistantly update values
+        'code for enabling/disabling buttons
+        For i As Integer = 0 To NUMBER_OF_GENERATORS - 1
+            'if player has enough money to buy a generator, the correspoding button, etc. should be enabled & vise-versa
+            If currentCookies < typeArray(i).getCost() Then
+                TryCast(generatorArray(i, 0), Button).Enabled = False
+                TryCast(generatorArray(i, 1), Label).Enabled = False
+            Else
+                TryCast(generatorArray(i, 0), Button).Enabled = True
+                TryCast(generatorArray(i, 1), Label).Enabled = True
+            End If
+        Next
 
     End Sub
 
     'continuously enable/disable all generators that can/can't be purchased with the current amount of currency possessed
-    Private Sub enableButtons()
-        'each element of generatorArray contains: [pic, button, label]
-        'the following code populates the list of generators
+    Private Sub tmrButtonEnabler_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tmrButtonEnabler.Tick
+        enableButtons()
+    End Sub
 
-        'persistantly check for which things can be purchased
-        Dim index() As Integer = {0, 0, 0}    'keep track of number of [pic, button, label] seen
+    'handles events for the label and button that make up a Generator's button
+    Private Sub cursor_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCursor.Click, lblCursor.Click
+        currentCookies -= cursor.getCost
+        buildingsOwned += 1
+        CpS += cursor.getCpS
+        cursor.updateCost()
 
-        For Each item As Control In pnlRight.Controls
-            If TypeOf item Is PictureBox Then
-                generatorArray(index(0), 0) = item
-                index(0) += 1
-            ElseIf TypeOf item Is Button Then
-                generatorArray(index(1), 1) = item
-                index(1) += 1
-            ElseIf TypeOf item Is Label Then
-                generatorArray(index(2), 2) = item
-                index(2) += 1
-            End If
-        Next
-
-        'used to persistantly update values
-        'code for enabling/disabling buttons
-        While (True)
-            For i As Integer = 0 To NUMBER_OF_GENERATORS - 1
-                'if player has enough money to buy a generator, the correspoding button, etc. should be enabled & vise-versa
-                If currentCookies < typeArray(i).getCost() Then
-                    TryCast(generatorArray(i, 0), PictureBox).Enabled = False
-                    TryCast(generatorArray(i, 1), Button).Enabled = False
-                    TryCast(generatorArray(i, 2), Label).Enabled = False
-                Else
-                    TryCast(generatorArray(i, 0), PictureBox).Enabled = True
-                    TryCast(generatorArray(i, 1), Button).Enabled = True
-                    TryCast(generatorArray(i, 2), Label).Enabled = True
-                End If
-            Next
-
-        End While
+        'update displays
+        'cost
+        btnCursor.Text = "Cursor: " + Convert.ToString(cursor.getCost)
+        'number owned
+        cursor.Quantity() = 1
+        lblCursor.Text = cursor.Quantity()
     End Sub
 End Class
