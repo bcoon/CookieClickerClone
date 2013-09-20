@@ -8,4 +8,52 @@ Public Class AntimatterCondenser
     Private amount As Integer = 0          'number of this type of generator created
     Private total As Double = 0      'number of cookies produced since beginning of game
     Private currentCost As Long = baseCost 'base cost * 1.15 (accurate for non-cursors?)
+
+    'Allows retrieval/editing of the CpS for a single generator of this type
+    Public Overrides ReadOnly Property getCpS() As Double
+        Get
+            Return CpS
+        End Get
+    End Property
+
+
+    'Returns the base cost of the first object purchased
+    Public Overrides ReadOnly Property getBaseCost() As Integer
+        Get
+            Return baseCost
+        End Get
+    End Property
+
+
+    'Allows retrieval/editing of the quantity of this generator in existance
+    Public Overrides Property Quantity() As Integer
+        Get
+            Return amount
+        End Get
+        Set(ByVal value As Integer)
+            amount += value
+        End Set
+    End Property
+
+    'Allows for retrieval/editing of the total Cookies produced by this generator type
+    Public Overrides Property TotalProduced() As Double
+        Get
+            Return total
+        End Get
+        Set(ByVal value As Double)
+            total += value
+        End Set
+    End Property
+
+    'Retrieve the current cost for buying this generator
+    Public Overrides ReadOnly Property getCost() As Long
+        Get
+            Return currentCost
+        End Get
+    End Property
+
+    'Called when this generator type has been purchased.  The next instance will cost 115% of the last
+    Public Overrides Sub updateCost()
+        currentCost *= 1.15
+    End Sub
 End Class

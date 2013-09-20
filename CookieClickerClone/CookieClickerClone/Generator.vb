@@ -7,48 +7,20 @@ Public MustInherit Class Generator
     Private currentCost As Long  'base cost * 1.15 (accurate for non-cursors?)
 
     'Allows retrieval/editing of the CpS for a single generator of this type
-    Public ReadOnly Property getCpS() As Double
-        Get
-            Return CpS
-        End Get
-    End Property
-
+    Public MustOverride ReadOnly Property getCpS() As Double
 
     'Returns the base cost of the first object purchased
-    Public ReadOnly Property getBaseCost() As Integer
-        Get
-            Return baseCost
-        End Get
-    End Property
-
+    Public MustOverride ReadOnly Property getBaseCost() As Integer
 
     'Allows retrieval/editing of the quantity of this generator in existance
-    Public Property Quantity() As Integer
-        Get
-            Return amount
-        End Get
-        Set(ByVal value As Integer)
-            amount += value
-        End Set
-    End Property
+    Public MustOverride Property Quantity() As Integer
 
     'Allows for retrieval/editing of the total Cookies produced by this generator type
-    Public Property TotalProduced() As Double
-        Get
-            Return total
-        End Get
-        Set(ByVal value As Double)
-            total += value
-        End Set
-    End Property
+    Public MustOverride Property TotalProduced() As Double
 
-    Public ReadOnly Property getCost() As Integer
-        Get
-            Return currentCost
-        End Get
-    End Property
+    'Retrieve the current cost for buying this generator
+    Public MustOverride ReadOnly Property getCost() As Long
 
-    Public Sub updateCost()
-        currentCost *= 1.15
-    End Sub
+    'Called when this generator type has been purchased.  The next instance will cost 115% of the last
+    Public MustOverride Sub updateCost()
 End Class

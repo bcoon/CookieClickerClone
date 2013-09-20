@@ -18,6 +18,8 @@
     Dim timeMachine As New TimeMachine
     Dim antimatterCondenser As New AntimatterCondenser
 
+    'used to persistantly update values
+    Dim enableButtonsThread As New System.Threading.Thread(AddressOf Me.enableButtons)
 
     'Keeping track of the generators listed on the form (pic, button, label)
     Const NUMBER_OF_GENERATORS = 10
@@ -33,14 +35,17 @@
         Application.Run(form)
 
         'persistantly check for which things can be purchased
-        Dim enableButtonsThread As New System.Threading.Thread(AddressOf form.enableButtons)
-        enableButtonsThread.IsBackground = True
-        enableButtonsThread.Start()
+        form.enableButtonsThread.IsBackground = True
+        form.enableButtonsThread.Start()
 
     End Sub
 
     'timer will tick every tenth of a second
     Private Sub tmrCounter_Tick(ByVal sender As Object, ByVal e As System.EventArgs) Handles tmrCounter.Tick
+        If enableButtonsThread.IsAlive Then
+            enableButtonsThread.Suspend()
+        End If
+        
         'update values
         time += 1
         currentCookies += CpS / 10
@@ -52,6 +57,11 @@
         If time Mod 10 = 0 Then 'one second has passed
 
         End If
+
+        If enableButtonsThread.IsAlive Then
+            enableButtonsThread.Resume()
+        End If
+
     End Sub
 
     Private Sub picCookie_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles picCookie.Click
