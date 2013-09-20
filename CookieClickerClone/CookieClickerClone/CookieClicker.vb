@@ -42,10 +42,10 @@
 
     'timer will tick every tenth of a second
     Private Sub tmrCounter_Tick(ByVal sender As Object, ByVal e As System.EventArgs) Handles tmrCounter.Tick
-        If enableButtonsThread.IsAlive Then
-            enableButtonsThread.Suspend()
-        End If
-        
+        'If enableButtonsThread.IsAlive Then
+        'enableButtonsThread.Suspend()
+        'End If
+
         'update values
         time += 1
         currentCookies += CpS / 10
@@ -58,9 +58,9 @@
 
         End If
 
-        If enableButtonsThread.IsAlive Then
-            enableButtonsThread.Resume()
-        End If
+        'If enableButtonsThread.IsAlive Then
+        'enableButtonsThread.Resume()
+        'End If
 
     End Sub
 
@@ -71,9 +71,6 @@
 
         'update displays
         lblCurrentCookies.Text = currentCookies
-
-        'enable necessary buttons
-        enableButtons()
 
     End Sub
 
@@ -86,11 +83,6 @@
         'each element of generatorArray contains: [pic, button, label]
         'the following code populates the list of generators
         Dim index() As Integer = {0, 0, 0}    'keep track of number of [pic, button, label] seen
-
-        'For Each obj As Object In pnlRight.Controls
-        'If TypeOf obj Is PictureBox Then
-        'End If
-        'Next
 
         For Each item As Control In pnlRight.Controls
             If TypeOf item Is PictureBox Then
